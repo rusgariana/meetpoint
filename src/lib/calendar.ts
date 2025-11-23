@@ -15,20 +15,27 @@ export function parseICS(icsContent: string): CalendarEvent[] {
         const jcalData = ICAL.parse(icsContent);
         const comp = new ICAL.Component(jcalData);
         const vevents = comp.getAllSubcomponents('vevent');
+        const now = new Date();
 
-        return vevents.map((vevent) => {
-            const event = new ICAL.Event(vevent);
-            return {
-                uid: event.uid,
-                title: event.summary,
-                start: event.startDate.toString(),
-                end: event.endDate.toString(),
-                description: event.description,
-                location: event.location,
-                // @ts-ignore - ical.js types might be incomplete
-                url: vevent.getFirstPropertyValue('url'),
-            };
-        });
+        return vevents
+            .map((vevent) => {
+                const event = new ICAL.Event(vevent);
+                return {
+                    uid: event.uid,
+                    title: event.summary,
+                    start: event.startDate.toString(),
+                    end: event.endDate.toString(),
+                    description: event.description,
+                    location: event.location,
+                    // @ts-ignore - ical.js types might be incomplete
+                    url: vevent.getFirstPropertyValue('url'),
+                };
+            })
+            .filter((event) => {
+                // Only include upcoming events (events that haven't ended yet)
+                const eventEnd = new Date(event.end);
+                return eventEnd > now;
+            });
     } catch (e) {
         console.error("Failed to parse ICS", e);
         return [];
