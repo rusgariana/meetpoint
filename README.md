@@ -4,7 +4,7 @@
 
 Meetpoint allows two people to discover mutual events from their Lu.ma calendars without revealing their full schedules. Built with Zero-Knowledge Private Set Intersection (PSI) and end-to-end encryption.
 
-🔗 **Live Demo:** [Coming soon after deployment]
+🔗 **Live Demo:** [https://meetpoint-zeta.vercel.app/](https://meetpoint-zeta.vercel.app/)
 
 ## Features
 
