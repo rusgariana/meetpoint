@@ -55,9 +55,6 @@ export default function Home() {
                             Discover overlapping events with peers without exposing your full schedule.
                             Powered by Private Set Intersection and ENS.
                         </p>
-                        <div className="p-4 rounded-lg bg-zinc-900/50 border border-zinc-800 inline-block">
-                            <p className="text-sm text-zinc-500">Connect your wallet to get started</p>
-                        </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-2xl mx-auto mt-12 text-sm text-zinc-500">
                             <div className="p-4 rounded-lg bg-zinc-900/30 border border-zinc-800">
@@ -82,21 +79,6 @@ export default function Home() {
                                     <h2 className="text-3xl font-bold">Load Your Calendar</h2>
                                 </div>
                                 <CalendarInput onCalendarLoaded={setEvents} />
-
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-2xl mt-8 text-sm text-zinc-500">
-                                    <div className="p-4 rounded-lg bg-zinc-900/30 border border-zinc-800">
-                                        <strong className="text-zinc-300 block mb-1">Client-Side Only</strong>
-                                        Your calendar is parsed locally. We never store your events.
-                                    </div>
-                                    <div className="p-4 rounded-lg bg-zinc-900/30 border border-zinc-800">
-                                        <strong className="text-zinc-300 block mb-1">End-to-End Encrypted</strong>
-                                        Matching happens via blinded keys. No data leakage.
-                                    </div>
-                                    <div className="p-4 rounded-lg bg-zinc-900/30 border border-zinc-800">
-                                        <strong className="text-zinc-300 block mb-1">Ephemeral</strong>
-                                        Sessions are temporary. No history is saved.
-                                    </div>
-                                </div>
                             </div>
                         ) : (
                             <div className="w-full animate-in fade-in zoom-in-95 duration-500">
